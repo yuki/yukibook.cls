@@ -1,0 +1,52 @@
+\documentclass{yukibook}
+
+
+\title{Título}
+\author{Rubén Gómez}
+
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Nueva parte 1}
+
+\chapter{Nuevo capítulo 1}
+\section{Nueva sección 1}
+\Blindtext[2]
+
+
+\section{Nueva sección 2: Awesomebox}
+Prueba de notebox:
+\notebox{\Blindtext[1]}
+
+Prueba de tipbox:
+\tipbox{\Blindtext[1]}
+
+Prueba de warningbox:
+\warningbox{\Blindtext[1]}
+
+Prueba de cautionbox:
+\cautionbox{\Blindtext[1]}
+
+Prueba de importantbox:
+\importantbox{\Blindtext[1]}
+
+\awesomebox{5pt}{\faCogs}{black}{\Blindtext[1]}
+
+\begin{info-box}
+  \notebox{\Blindtext[1]}
+\end{info-box}
+\begin{warning-box}
+  \Blindtext[1]
+\end{warning-box}
+\begin{error-box}
+  \Blindtext[1]
+\end{error-box}
+
+
+
+
+\end{document}
