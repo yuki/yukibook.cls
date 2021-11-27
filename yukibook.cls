@@ -33,9 +33,20 @@
 %--------------------------------------------------------------------------
 % TOC
 %--------------------------------------------------------------------------
-\RequirePackage{titletoc}
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
+\renewcommand\@dotsep{200}
+
+\renewcommand\tableofcontents{
+  \begingroup
+    \hypersetup{hidelinks} % hide links in TOC, too much blue in it
+
+    \chapter*{\contentsname\vspace{-0.55em}}
+    \setcounter{tocdepth}{3}    % add to TOC subsubsections
+    \setcounter{secnumdepth}{3} % add to subsubsections labels
+    \setlength{\parskip}{0em}
+      \@starttoc{toc}
+    \setlength{\parskip}{1.2em}
+  \endgroup
+}
 
 
 %--------------------------------------------------------------------------
@@ -88,7 +99,7 @@
 %--------------------------------------------------------------------------
 % Links
 %--------------------------------------------------------------------------
-\RequirePackage{hyperref}
+\RequirePackage[linktoc=all]{hyperref}
 \urlstyle{same}
 \hypersetup{
     colorlinks=true,
