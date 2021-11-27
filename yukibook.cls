@@ -89,7 +89,13 @@
 % Links
 %--------------------------------------------------------------------------
 \RequirePackage{hyperref}
-\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor=ocre,bookmarks=true,bookmarksopen=false}
+\urlstyle{same}
+\hypersetup{
+    colorlinks=true,
+    allcolors=headerscolor,
+    bookmarks=true,
+    bookmarksopen=true
+}
 
 
 %--------------------------------------------------------------------------
