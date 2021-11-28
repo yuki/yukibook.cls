@@ -53,7 +53,8 @@
 % Color definitions
 %--------------------------------------------------------------------------
 \RequirePackage{xcolor}
-\definecolor{headerscolor}{HTML}{023b80}
+%\definecolor{headerscolor}{HTML}{023b80}
+\definecolor{headerscolor}{HTML}{28436c}
 
 
 %--------------------------------------------------------------------------
@@ -67,12 +68,27 @@
 \renewcommand{\headrulewidth}{0pt} %remove the header's rule
 
 \fancyfoot{} % clear all footer fields
-\fancyfoot[LE,RO]{
+\fancyfoot[LE]{
+  \begin{tikzpicture}
+    \path [fill=headerscolor] (0, 0) rectangle (0.8, 0.8);
+    \node [white] at (0.4,0.4) {\textbf{\thepage}};
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \path (0, 0);
+    \node at (0,0.35){\color{headerscolor}\footnotesize\textit{\@thetitle}};
+  \end{tikzpicture}
+}
+\fancyfoot[RO]{
+  \begin{tikzpicture}
+    \path (0, 0);
+    \node at (0,0.35){\color{headerscolor}\footnotesize\textit{\@thetitle}};
+  \end{tikzpicture}
   \begin{tikzpicture}
     \path [fill=headerscolor] (0, 0) rectangle (0.8, 0.8);
     \node [white] at (0.4,0.4) {\textbf{\thepage}};
   \end{tikzpicture}
 }
+
 % TODO: change "\part"'s footer
 
 
@@ -157,3 +173,62 @@
 % for lorem ipsum
 %--------------------------------------------------------------------------
 \RequirePackage{blindtext}
+
+
+%--------------------------------------------------------------------------
+% Cover and insertion of table of contents
+%--------------------------------------------------------------------------
+\newcommand{\yukibook}[5]{
+
+  \def\@thetitle{#1}
+  \def\@theauthor{#2}
+  \def\@theyear{#3}
+  \def\@thesubject{#4}
+  \def\@thephrase{#5}
+  \thispagestyle{empty}
+
+  % Cover inspired on O'reilly books and from https://github.com/johnjohnlin/oreilly_cover
+  \begin{tikzpicture}[remember picture,overlay]
+
+    % Image
+    \node [align=center] at (current page.center)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=center,align=center] at (0,6)
+          {\includegraphics[width=1\textwidth]{img/dragon.png}};
+          % from https://commons.wikimedia.org/wiki/File:DnD_Dragon.png
+      \end{tikzpicture}};
+
+    % The subject's box
+    \node [align=center] at (current page.north)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \fill[fill=headerscolor] (-20,0) rectangle (20,-2);
+        \node[anchor=north] at (0,-0.5)
+          {\Huge\color{white}\textit{\@thesubject}};
+      \end{tikzpicture}};
+
+    % Title's box
+    \node [] at (current page.center)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \fill[fill=headerscolor] (-10,0) rectangle (10,-8);
+        \node[align=left] at (0,-2)
+          {\Huge\color{white}\textbf{\@thetitle}};
+
+        % The phrase
+        \node[anchor=east,align=right] at (10,-9)
+          {\Huge\color{headerscolor}\textit{\@thephrase}};
+      \end{tikzpicture}};
+
+    % Author
+    \node [align=center] at (current page.south)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south east, align=right] at (10,1.5)
+          {\Huge\color{headerscolor}\textbf{\@theauthor}};
+      \end{tikzpicture}};
+
+  \end{tikzpicture}
+
+  % We add a pagebreak and the table of contents
+  \pagebreak
+  \tableofcontents
+
+} % end of \yukibook
