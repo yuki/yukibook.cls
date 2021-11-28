@@ -11,7 +11,7 @@
 %--------------------------------------------------------------------------
 % Geometry
 %--------------------------------------------------------------------------
-\RequirePackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\RequirePackage[a4paper,margin=2cm,footskip=-0.5cm]{geometry}
 
 
 %--------------------------------------------------------------------------
@@ -55,6 +55,25 @@
 \RequirePackage{xcolor}
 \definecolor{headerscolor}{HTML}{023b80}
 
+
+%--------------------------------------------------------------------------
+% Header and footer styling
+%--------------------------------------------------------------------------
+\RequirePackage{tikz}
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt} %remove the header's rule
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{
+  \begin{tikzpicture}
+    \path [fill=headerscolor] (0, 0) rectangle (0.8, 0.8);
+    \node [white] at (0.4,0.4) {\textbf{\thepage}};
+  \end{tikzpicture}
+}
+% TODO: change "\part"'s footer
 
 
 %--------------------------------------------------------------------------
@@ -136,4 +155,5 @@
 
 %--------------------------------------------------------------------------
 % for lorem ipsum
+%--------------------------------------------------------------------------
 \RequirePackage{blindtext}
