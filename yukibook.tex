@@ -2,29 +2,57 @@
 
 \begin{document}
 
-\yukibook{Título1234 muy largo para ver qué pasa con el footer y con el título que la} 	% Title
+\yukibook{The Title \linebreak of the \linebreak Book} 	% Title
   {Rubén Gómez}			% Author
   {2021}				% Year
-  {Nombre de la asignatura} % Asignatura
-  {Frase motivadora}	% catch phrase
+  {The name \linebreak of the degree} % Name of degree
+  {\textquote{A very good phase for a very good book"}}	% catch phrase
+  {The phrase's author}	% the phrase's author
 
 %--------------------------------------------------------------------------
 % Start your parts, chapters and sections here
 %--------------------------------------------------------------------------
 
-\part{Nueva parte 1}
+\part{Part 1}
 
-\chapter{Nuevo capítulo 1}
-You can see how this pdf has been made \href{https://github.com/yuki/yukibook.cls}{here} or you can go to the next url: \url{https://github.com/yuki/yukibook.cls} .
+\chapter{Introduction}
+You can see how this pdf has been made \href{https://github.com/yuki/yukibook.cls}{here} using a custom \LaTeX\xspace  class.
+
+You can use the \textbf{yukibook.tex} file to see the text and the file \textbf{yukibook.cls} to see how the class has been implemented. If you don't know nothing about \LaTeX\xspace , probably you won't need this.
 
 
-\Blindtext[2]
 
-\chapter{Nuevo capítulo 2}
-\Blindtext[2]
+\begin{tcolorbox}
+This is a basic tcolorbox.
+
+\Blindtext[1]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Tcolorbox with title]
+\Blindtext[1]
+\end{tcolorbox}
+
+The next box is a fitted text into a 4cm heigth box:
+
+
+Txo tcboxfit in a row with fitted box:
+\begin{tcbraster}[colback=green!10!white,boxsep=1mm]
+\tcboxfit[height=4cm]{\Blindtext[1]}
+\tcboxfit[height=4cm]{\Blindtext[1]}
+\end{tcbraster}
+
+%\tcbset{colframe=blue!50!black,colback=red!10!white,
+%boxsep=0pt,top=1mm,bottom=1mm,left=1mm,right=1mm,
+%fit algorithm=hybrid*,raster equal skip=1mm}
+
+
+\Blindtext[1]
+
+\chapter{Chapter 2}
+\Blindtext[1]
 
 \section{Nueva sección 1}
-\Blindtext[2]
+\Blindtext[1]
 
 \subsection{nueva subsección}
 \Blindtext[1]
@@ -37,6 +65,7 @@ You can see how this pdf has been made \href{https://github.com/yuki/yukibook.cl
 
 \section{Nueva sección 2: Awesomebox}
 Prueba de notebox:
+
 \notebox{\Blindtext[1]}
 
 Prueba de tipbox:
@@ -63,6 +92,8 @@ Prueba de importantbox:
   \Blindtext[1]
 \end{error-box}
 
+
+\part{Part 2}
 \Blinddocument
 
 

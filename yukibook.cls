@@ -7,6 +7,7 @@
 %--------------------------------------------------------------------------
 \RequirePackage[spanish]{babel}
 \RequirePackage[utf8]{inputenc}
+\RequirePackage{csquotes}
 
 %--------------------------------------------------------------------------
 % Geometry
@@ -149,6 +150,7 @@
 %--------------------------------------------------------------------------
 \RequirePackage{awesomebox}  % https://www.ctan.org/pkg/awesomebox
 \RequirePackage{tcolorbox}
+\tcbuselibrary{raster,fitting}
 
 
 %--------------------------------------------------------------------------
@@ -178,50 +180,63 @@
 %--------------------------------------------------------------------------
 % Cover and insertion of table of contents
 %--------------------------------------------------------------------------
-\newcommand{\yukibook}[5]{
+\newcommand{\yukibook}[6]{
 
   \def\@thetitle{#1}
   \def\@theauthor{#2}
   \def\@theyear{#3}
-  \def\@thesubject{#4}
+  \def\@thedegree{#4}
   \def\@thephrase{#5}
+  \def\@thephraseauthor{#6}
   \thispagestyle{empty}
 
-  % Cover inspired on O'reilly books and from https://github.com/johnjohnlin/oreilly_cover
+  % Cover inspired by O'reilly books and from https://github.com/johnjohnlin/oreilly_cover
   \begin{tikzpicture}[remember picture,overlay]
 
     % Image
     \node [align=center] at (current page.center)
       {\begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=center,align=center] at (0,6)
-          {\includegraphics[width=1\textwidth]{img/dragon.png}};
-          % from https://commons.wikimedia.org/wiki/File:DnD_Dragon.png
+        \node[anchor=center,align=center] at (0,5)
+          {\includegraphics[width=1\textwidth]{img/cover.png}};
       \end{tikzpicture}};
 
     % The subject's box
     \node [align=center] at (current page.north)
       {\begin{tikzpicture}[remember picture, overlay]
-        \fill[fill=headerscolor] (-20,0) rectangle (20,-2);
-        \node[anchor=north] at (0,-0.5)
-          {\Huge\color{white}\textit{\@thesubject}};
+        \fill[fill=headerscolor] (-20,0) rectangle (20,-2.5);
+        \node[anchor=north] at (0,-0.1)
+          {
+            \tcboxfit[height=2cm,
+                      width=\paperwidth,
+                      halign=flush center,
+                      valign=center,
+                      opacityfill=0]
+                    {\huge\color{white}\textbf{\textit{\@thedegree}}}
+          };
       \end{tikzpicture}};
+      
 
     % Title's box
     \node [] at (current page.center)
       {\begin{tikzpicture}[remember picture, overlay]
-        \fill[fill=headerscolor] (-10,0) rectangle (10,-8);
-        \node[align=left] at (0,-2)
-          {\Huge\color{white}\textbf{\@thetitle}};
+        \fill[fill=headerscolor] (-11,-1) rectangle (11,-8);
+        \node[align=left] at (0,-4.5)
+          {
+            \tcboxfit[height=6.5cm,width=\paperwidth,halign=flush center,opacityfill=0]
+                {\tcbfontsize{10}\color{white}\textbf{\textit{\@thetitle}}}
+          };
 
         % The phrase
         \node[anchor=east,align=right] at (10,-9)
-          {\Huge\color{headerscolor}\textit{\@thephrase}};
+          {\LARGE\color{headerscolor}\textit{\@thephrase}};
+        \node[anchor=east,align=right] at (10,-10)
+          {\large\color{headerscolor}\textit{\@thephraseauthor}};
       \end{tikzpicture}};
 
     % Author
     \node [align=center] at (current page.south)
       {\begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=south east, align=right] at (10,1.5)
+        \node[anchor=south,align=center] at (-7,2)
           {\Huge\color{headerscolor}\textbf{\@theauthor}};
       \end{tikzpicture}};
 
