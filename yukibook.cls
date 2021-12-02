@@ -180,7 +180,7 @@
 %--------------------------------------------------------------------------
 % Cover and insertion of table of contents
 %--------------------------------------------------------------------------
-\newcommand{\yukibook}[6]{
+\newcommand{\yukibook}[7]{
 
   \def\@thetitle{#1}
   \def\@theauthor{#2}
@@ -188,6 +188,8 @@
   \def\@thedegree{#4}
   \def\@thephrase{#5}
   \def\@thephraseauthor{#6}
+  \def\@thecoverpath{#7}
+
   \thispagestyle{empty}
 
   \newgeometry{margin=0pt}
@@ -197,7 +199,7 @@
                 arc=0mm,
                 colframe=headerscolor,
                 colback=headerscolor,
-                fit to={\paperwidth} and 2cm,
+                fit to={\paperwidth} and 2.5cm,
                 fit basedim=130pt,
                 halign=flush center,
                 valign=center,
@@ -209,12 +211,12 @@
   \begin{tcolorbox}[
                 colframe=white,
                 colback=white,
-                fit to={\paperwidth} and 14cm,
+                fit to={\paperwidth} and 12.5cm,
                 halign=flush center,
                 valign=center,
                 space to=\myspace,
               ]
-      \includegraphics[height=14.5cm]{img/cover.png}
+      \includegraphics[height=13cm]{\@thecoverpath}
   \end{tcolorbox}
 
   \begin{tcolorbox}[
@@ -226,9 +228,9 @@
                 fit basedim=130pt,
                 halign=flush center,
                 valign=center,
-                top=3mm,bottom=3mm,
+                top=1cm,bottom=1cm,
               ]
-      \color{white}\textbf{\textit{\@thetitle}}
+        \color{white}\textbf{\textit{\@thetitle}}
   \end{tcolorbox}
 
   \begin{tcolorbox}[
@@ -249,17 +251,20 @@
                 boxrule=0mm,
                 colframe=white,
                 colback=white,
-                fit to={\paperwidth} and 2cm,
-                fit basedim=30pt,
+                fit to={\paperwidth} and 2.6cm,
+                fit basedim=110pt,
+                halign=flush left,
                 left=1cm,
                 valign=top
               ]
-      \color{headerscolor}\textbf{\@theauthor}
+      \color{headerscolor}\textbf{\@theauthor} \linebreak
+      \color{headerscolor}\textbf{\@theyear}
   \end{tcolorbox}
 
-\restoregeometry
+  \restoregeometry
   % We add a pagebreak and the table of contents
-  \pagebreak
+  \clearpage
   \tableofcontents
+  \clearpage
 
 } % end of \yukibook
