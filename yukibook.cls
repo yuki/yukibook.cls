@@ -40,13 +40,14 @@
   \begingroup
     \hypersetup{hidelinks} % hide links in TOC, too much blue in it
 
-    \chapter*{\contentsname\vspace{-0.55em}}
+    \chapter*{\contentsname}
     \setcounter{tocdepth}{3}    % add to TOC subsubsections
     \setcounter{secnumdepth}{3} % add to subsubsections labels
     \setlength{\parskip}{0em}
       \@starttoc{toc}
     \setlength{\parskip}{1.2em}
   \endgroup
+  \clearpage
 }
 
 
@@ -262,9 +263,8 @@
   \end{tcolorbox}
 
   \restoregeometry
-  % We add a pagebreak and the table of contents
+  % We add a clearpage and the table of contents
   \clearpage
   \tableofcontents
-  \clearpage
 
 } % end of \yukibook
