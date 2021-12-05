@@ -282,8 +282,21 @@
   \end{tcolorbox}
 
   \restoregeometry
-  % We add a clearpage and the table of contents
+  % Copyright page
+  \null
+  \vfill
+  \begin{flushleft}
+    \includegraphics[]{img/seal.png} \\
+    Copyleft \textcopyright \ \@theauthor \\
+    \vspace{5mm}
+    \textbf{Licencia: } \href{https://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons BY-SA 4.0} \\
+    \vspace{5mm}
+    Este libro se ha relizado teniendo en cuenta la cultura libre y puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia Attribution-ShareAlike de \textbf{Creative Commons}.
+    \vspace{5mm}
+  \end{flushleft}
+  
   \clearpage
+
   \tableofcontents
 
 } % end of \yukibook
