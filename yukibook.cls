@@ -147,12 +147,15 @@
 
 
 %--------------------------------------------------------------------------
-% Cool dependencies
+% Needed dependencies
 %--------------------------------------------------------------------------
 \RequirePackage{awesomebox}  % https://www.ctan.org/pkg/awesomebox
 \RequirePackage{tcolorbox}
-\tcbuselibrary{raster,fitting}
+\tcbuselibrary{raster,fitting,minted,many,listings,breakable}
+\usemintedstyle{friendly}
+\definecolor{code-background-color}{HTML}{002b36}
 
+\RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
 
 %--------------------------------------------------------------------------
 % Custom creations
@@ -170,6 +173,22 @@
 	colback=red!5!white,
 	colframe=red!75!black
 }
+
+\newtcblisting[auto counter,number within=section, list inside=mycommands]
+  {mycode}[3]{
+    listing only,adjusted title={#1}, listing engine=minted,minted language=#2,
+    arc=2mm, breakable=true,enhanced jigsaw,
+    minted options={fontsize=#3},colback=white,
+    list entry={\protect\numberline{\thetcbcounter}#1}
+}
+
+%\newtcblisting[auto counter,number within=section, list inside=mycommands]
+%  {mycode-fit}[4]{
+%    listing only,adjusted title={#1}, listing engine=minted,minted language=#2,
+%    arc=2mm, breakable=true,
+%    fit to={\linewidth} and #4, enhanced jigsaw,
+%    list entry={\protect\numberline{\thetcbcounter}#1}
+%}
 
 
 %--------------------------------------------------------------------------

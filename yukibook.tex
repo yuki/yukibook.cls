@@ -19,50 +19,87 @@
 \chapter{Introduction}
 You can see how this pdf has been made \href{https://github.com/yuki/yukibook.cls}{here} using a custom \LaTeX{}  class.
 
-You can use the \textbf{yukibook.tex} file to see the text and the file \textbf{yukibook.cls} to see how the class has been implemented. If you don't know nothing about \LaTeX{} , probably you won't need this.
+You can use the \textbf{yukibook.tex} file to see how to structure the text and the file \textbf{yukibook.cls} to see how the class has been implemented. If you don't know nothing about \LaTeX{} , probably you won't need this.
+
+In this example file I'm going to show all the custom features I'm going to use in my books. 
+
+\chapter{Required Packages}
+To use this class there are some requirements that must be working in order to recreate the PDF you are reading.
+\section{\LaTeX{} packages}
+
+This class uses the next \LaTeX{} packages:
+\begin{itemize}
+  \item babel
+  \item geometry
+  \item sourcesanspro
+  \item sourcecodepro
+  \item xcolor
+  \item fancyhdr
+  \item tikz
+  \item titlesec
+  \item hyperref
+  \item tcolorbox
+  \item minted 
+  \item awesomebox
+\end{itemize}
+
+\section{Command line packages}
+The \LaTeX{} package 'minted' needs the \href{https://pygments.org/}{pygmentize} CLI program to work.
 
 
+\chapter{Utilities}
+This class has been done to use it to create technichal books for students where's will appear source code, tips, warnings, ... 
 
-\begin{tcolorbox}
-This is a basic tcolorbox.
+For example, the next code for GNU/Linux console:
 
-\Blindtext[1]
-\end{tcolorbox}
+\begin{mycode}{Journald configuration file}{console}{}
+[root@localhost ~]# vi /etc/systemd/journald.conf
+\end{mycode}
 
-\begin{tcolorbox}[title=Tcolorbox with title]
-\Blindtext[1]
-\end{tcolorbox}
+There are a lot of possible output examples that can be made:
 
-The next box is a fitted text into a 4cm heigth box:
+\begin{mycode}{lsblk command output}{shell-session}{}
+[root@localhost ~]# lsblk
+NAME                       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda                          8:0    0   1,8T  0 disk 
+└─sda1                       8:1    0   1,8T  0 part /home/backup
+sdb                          8:16   0   3,6T  0 disk 
+└─sdb1                       8:17   0   3,6T  0 part /home/disco4tb
+sdc                          8:32   0 447,1G  0 disk 
+├─sdc1                       8:33   0   529M  0 part 
+├─sdc2                       8:34   0   100M  0 part 
+├─sdc3                       8:35   0    16M  0 part 
+└─sdc4                       8:36   0 446,5G  0 part 
+nvme0n1                    259:0    0 931,5G  0 disk 
+├─nvme0n1p1                259:1    0   512M  0 part 
+└─nvme0n1p2                259:2    0   800G  0 part /home
+nvme1n1                    259:3    0 931,5G  0 disk 
+├─nvme1n1p1                259:4    0   512M  0 part /boot/efi
+├─nvme1n1p2                259:5    0    90G  0 part /
+├─nvme1n1p3                259:6    0   300G  0 part 
+│ ├─VMs-ubuntu--20.04--so1 254:0    0    10G  0 lvm  
+│ ├─VMs-OS--X--Monterey    254:1    0   100G  0 lvm  
+│ ├─VMs-archlinux          254:2    0    20G  0 lvm  
+│ ├─VMs-manjaro--kde       254:3    0    25G  0 lvm  
+│ └─VMs-manjaro--gnome     254:4    0    25G  0 lvm  
+└─nvme1n1p4                259:7    0 156,2G  0 part
+\end{mycode}
 
 
-Txo tcboxfit in a row with fitted box:
-\begin{tcbraster}[colback=green!10!white,boxsep=1mm]
-\tcboxfit[height=4cm]{\Blindtext[1]}
-\tcboxfit[height=4cm]{\Blindtext[1]}
-\end{tcbraster}
+Another example with MySQL output text, showing some replica status:
 
-%\tcbset{colframe=blue!50!black,colback=red!10!white,
-%boxsep=0pt,top=1mm,bottom=1mm,left=1mm,right=1mm,
-%fit algorithm=hybrid*,raster equal skip=1mm}
+\begin{mycode}{Mysql: show replicas}{mysql}{\footnotesize}
+mysql> show replicas;
++-----------+---------+------+-----------+--------------------------------------+
+| Server_Id | Host    | Port | Source_Id | Replica_UUID                         |
++-----------+---------+------+-----------+--------------------------------------+
+|         2 | server2 | 3306 |         1 | 9fb33895-4c78-11ec-b23b-525400f50be5 |
++-----------+---------+------+-----------+--------------------------------------+
+1 row in set (0,00 sec)
+\end{mycode}
 
+And of course, sometimes we need inline console code. Maybe to point some configuration file like \\ \mintinline[bgcolor=code-background-color]{console}{/etc/vim/vimrc} or sometimes when you need to show some command line code like \mintinline[bgcolor=code-background-color]{console}{ mysql> }, as an example.
 
-\Blindtext[1]
-
-\chapter{Chapter 2}
-\Blindtext[1]
-
-\section{Nueva sección 1}
-\Blindtext[1]
-
-\subsection{nueva subsección}
-\Blindtext[1]
-
-\subsubsection{sub sub sección}
-\Blindtext[1]
-
-\subparagraph{sub párrafo}
-\Blindtext[1]
 
 \section{Nueva sección 2: Awesomebox}
 Prueba de notebox:
@@ -97,5 +134,7 @@ Prueba de importantbox:
 \part{Part 2}
 \Blinddocument
 
+%\tcblistof{mycommands}{My Listings}
+%\listoflistings
 
 \end{document}
