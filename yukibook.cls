@@ -144,6 +144,7 @@
     bookmarks=true,
     bookmarksopen=true
 }
+\RequirePackage{href-ul}
 
 
 %--------------------------------------------------------------------------
@@ -156,6 +157,12 @@
 \definecolor{code-background-color}{HTML}{002b36}
 
 \RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
+
+\RequirePackage{graphicx}
+\RequirePackage{wrapfig}
+
+\RequirePackage{caption}
+\captionsetup{labelformat=empty,textfont={scriptsize}}
 
 %--------------------------------------------------------------------------
 % Custom creations
@@ -189,6 +196,26 @@
 %    fit to={\linewidth} and #4, enhanced jigsaw,
 %    list entry={\protect\numberline{\thetcbcounter}#1}
 %}
+
+\newcommand{\itemimage}[6]{
+  % #1 item text
+  % #2 l / r : left or right position of the image
+  % #3 size of the image
+  % #4 image
+  % #5 caption
+  % #6 text
+  \vspace{-1.7em}
+  \parbox[t]{\dimexpr\textwidth-\leftmargin}{%
+    \item[#1]
+      \begin{wrapfigure}{#2}{#3\textwidth}
+        \vspace{-12pt}
+        \includegraphics[width=\linewidth]{#4}
+        \vspace{-29pt}\caption{#5}\vspace{-30pt}
+      \end{wrapfigure}
+      \setlength{\parskip}{0.8em}
+      #6
+  }
+}
 
 
 %--------------------------------------------------------------------------
