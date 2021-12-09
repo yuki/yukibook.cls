@@ -148,21 +148,31 @@
 
 
 %--------------------------------------------------------------------------
+% Colors
+%--------------------------------------------------------------------------
+\definecolor{code-bg-color}{HTML}{002b36}
+\definecolor{inline-bg-color}{HTML}{202020}
+
+
+%--------------------------------------------------------------------------
 % Needed dependencies
 %--------------------------------------------------------------------------
 \RequirePackage{awesomebox}  % https://www.ctan.org/pkg/awesomebox
 \RequirePackage{tcolorbox}
 \tcbuselibrary{raster,fitting,minted,many,listings,breakable}
 \usemintedstyle{friendly}
-\definecolor{code-background-color}{HTML}{002b36}
+\setmintedinline[console]{style=native,bgcolor=inline-bg-color}
+
 
 \RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
-
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
 
 \RequirePackage{caption}
 \captionsetup{labelformat=empty,textfont={scriptsize}}
+
+\RequirePackage{enumitem}
+\setlist{topsep=-5pt}
 
 %--------------------------------------------------------------------------
 % Custom creations
@@ -321,7 +331,7 @@
     Este libro se ha relizado teniendo en cuenta la cultura libre y puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia Attribution-ShareAlike de \textbf{Creative Commons}.
     \vspace{5mm}
   \end{flushleft}
-  
+
   \clearpage
 
   \tableofcontents
