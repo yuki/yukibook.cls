@@ -58,6 +58,11 @@
 %\definecolor{headerscolor}{HTML}{023b80}
 \definecolor{headerscolor}{HTML}{28436c}
 
+\definecolor{code-bg-color}{HTML}{002b36}
+\definecolor{inline-bg-color}{HTML}{202020}
+
+\definecolor{error-color}{HTML}{9e0000}
+
 
 %--------------------------------------------------------------------------
 % Header and footer styling
@@ -140,18 +145,11 @@
 \urlstyle{same}
 \hypersetup{
     colorlinks=true,
-    allcolors=headerscolor,
-    bookmarks=true,
+%    allcolors=headerscolor,
+%    bookmarks=true,
     bookmarksopen=true
 }
 \RequirePackage{href-ul}
-
-
-%--------------------------------------------------------------------------
-% Colors
-%--------------------------------------------------------------------------
-\definecolor{code-bg-color}{HTML}{002b36}
-\definecolor{inline-bg-color}{HTML}{202020}
 
 
 %--------------------------------------------------------------------------
@@ -167,6 +165,7 @@
 \RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
+\RequirePackage{fontawesome5}
 
 \RequirePackage{caption}
 \captionsetup{labelformat=empty,textfont={scriptsize}}
@@ -186,15 +185,33 @@
 	colback=orange!5!white,
 	colframe=orange!80!black
 }
-\newtcolorbox{error-box}{
-	colback=red!5!white,
-	colframe=red!75!black
+
+\newcommand{\errorbox}[1]{
+    \begin{tcolorbox}[
+            colframe=error-color,
+            colbacktitle=error-color,
+            title=\textbf{¡Cuidado!},
+            enhanced,
+            sidebyside,
+            segmentation hidden,
+            lefthand width=1.2cm,
+            colback=red!4!white,
+            colupper=error-color
+        ]
+        \centering
+        \color{error-color}
+        \fontsize{30pt}{-10pt}\faExclamationTriangle
+        \tcblower
+        \color{error-color}
+        #1
+    \end{tcolorbox}
 }
+
 
 \newtcblisting[auto counter,number within=section, list inside=mycommands]
   {mycode}[3]{
     listing only,adjusted title={#1}, listing engine=minted,minted language=#2,
-    arc=2mm, breakable=true,enhanced jigsaw,
+    breakable=true,enhanced jigsaw,
     minted options={fontsize=#3},colback=white,
     list entry={\protect\numberline{\thetcbcounter}#1}
 }
