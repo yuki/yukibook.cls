@@ -93,8 +93,7 @@
   \begin{tikzpicture}
     \path [fill=headerscolor] (0, 0) rectangle (0.8, 0.8);
     \node [white] at (0.4,0.4) {\textbf{\thepage}};
-  \end{tikzpicture}
-}
+  \end{tikzpicture}}
 
 % TODO: change "\part"'s footer
 
