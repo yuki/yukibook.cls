@@ -218,6 +218,9 @@
 \DeclareTotalTCBox{\configfile}{ v }
 {verbatim,colupper=white,colback=inline-bg-color,colframe=black,breakable=true,enhanced}{\faFile\hspace{0pt}  #1}
 
+\DeclareTotalTCBox{\configdir}{ v }
+{verbatim,colupper=white,colback=inline-bg-color,colframe=black,breakable=true,enhanced}{\faFolderOpen\hspace{0pt}  #1}
+
 
 \newcommand{\itemimage}[6]{
   % #1 item text
