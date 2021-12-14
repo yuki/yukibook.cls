@@ -154,11 +154,10 @@
 %--------------------------------------------------------------------------
 % Needed dependencies
 %--------------------------------------------------------------------------
-\RequirePackage{awesomebox}  % https://www.ctan.org/pkg/awesomebox
 \RequirePackage{tcolorbox}
 \tcbuselibrary{raster,fitting,minted,many,listings,breakable}
 \usemintedstyle{friendly}
-\setmintedinline[console]{style=native,bgcolor=inline-bg-color}
+%\setmintedinline[console]{style=colorful}
 
 
 \RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
@@ -173,55 +172,53 @@
 \setlist{topsep=-5pt}
 
 %--------------------------------------------------------------------------
-% Custom creations
+% Custom color BOXES
 %--------------------------------------------------------------------------
-%% From Eisvogel pandoc-latex-template: https://github.com/Wandmalfarbe/pandoc-latex-template
-\newtcolorbox{info-box}{
-	colback=cyan!5!white,
-	colframe=cyan!60!black
+\newcommand{\custombox}[5]{
+    \begin{tcolorbox}[
+        colframe=#1, colbacktitle=#1,
+        colupper=#1, colback=#2,
+        enhanced, sidebyside, segmentation hidden,
+        lefthand width=1.2cm,
+        title=\textbf{#3},]
+      \centering
+      \color{#1}
+      \fontsize{30pt}{-10pt}#4
+      \tcblower
+      \color{#1}
+      #5
+    \end{tcolorbox}
 }
-\newtcolorbox{warning-box}{
-	colback=orange!5!white,
-	colframe=orange!80!black
+%% Inspired on awesomebox
+\newcommand{\infobox}[1]{
+    \custombox{cyan!60!black}{cyan!5!white}{Información}{\faInfoCircle}{#1}
+}
+
+\newcommand{\warnbox}[1]{
+    \custombox{orange!80!black}{orange!5!white}{¡Atención!}{\faExclamationCircle}{#1}
 }
 
 \newcommand{\errorbox}[1]{
-    \begin{tcolorbox}[
-            colframe=error-color,
-            colbacktitle=error-color,
-            title=\textbf{¡Cuidado!},
-            enhanced,
-            sidebyside,
-            segmentation hidden,
-            lefthand width=1.2cm,
-            colback=red!4!white,
-            colupper=error-color
-        ]
-        \centering
-        \color{error-color}
-        \fontsize{30pt}{-10pt}\faExclamationTriangle
-        \tcblower
-        \color{error-color}
-        #1
-    \end{tcolorbox}
+    \custombox{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}{#1}
 }
 
-
+%--------------------------------------------------------------------------
+% CODE custom creations
+%--------------------------------------------------------------------------
 \newtcblisting[auto counter,number within=section, list inside=mycommands]
   {mycode}[3]{
-    listing only,adjusted title={#1}, listing engine=minted,minted language=#2,
+    listing only,adjusted title={\faTerminal \hspace{10pt}#1}, listing engine=minted,minted language=#2,
     breakable=true,enhanced jigsaw,
     minted options={fontsize=#3},colback=white,
     list entry={\protect\numberline{\thetcbcounter}#1}
 }
 
-%\newtcblisting[auto counter,number within=section, list inside=mycommands]
-%  {mycode-fit}[4]{
-%    listing only,adjusted title={#1}, listing engine=minted,minted language=#2,
-%    arc=2mm, breakable=true,
-%    fit to={\linewidth} and #4, enhanced jigsaw,
-%    list entry={\protect\numberline{\thetcbcounter}#1}
-%}
+\DeclareTotalTCBox{\commandbox}{ v }
+  {verbatim,colupper=white,colback=black!75!white,colframe=black,breakable=true,enhanced}{\faTerminal\hspace{0pt}  #1}
+
+\DeclareTotalTCBox{\configfile}{ v }
+{verbatim,colupper=white,colback=black!75!white,colframe=black,breakable=true,enhanced}{\faFile\hspace{0pt}  #1}
+
 
 \newcommand{\itemimage}[6]{
   % #1 item text

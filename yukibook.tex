@@ -40,14 +40,13 @@ This class uses the next \LaTeX{} packages:
   \item hyperref
   \item tcolorbox
   \item minted
-  \item awesomebox
 \end{itemize}
 
 \section{Command line packages}
 The \LaTeX{} package 'minted' needs the \href{https://pygments.org/}{pygmentize} CLI program to work.
 
 
-\chapter{Utilities}
+\chapter{Examples}
 This class has been done to use it to create technichal books for students where's will appear source code, tips, warnings, ...
 
 For example, the next code for GNU/Linux console:
@@ -98,36 +97,24 @@ mysql> show replicas;
 1 row in set (0,00 sec)
 \end{mycode}
 
-And of course, sometimes we need inline console code. Maybe to point some configuration file like \\ \mintinline{console}{/etc/vim/vimrc} or sometimes when you need to show some command line code like \mintinline{console}{ mysql> }, as an example.
+Sometimes we need inline console code like  \commandbox{ls} . And other times we need to talk about some configuration file like \configfile{/etc/hosts}
 
 
-\section{Nueva sección 2: Awesomebox}
-Prueba de notebox:
 
-\notebox{\Blindtext[1]}
 
-Prueba de tipbox:
-\tipbox{\Blindtext[1]}
 
-Prueba de warningbox:
-\warningbox{\Blindtext[1]}
+\section{Custom boxes}
+Se han creado unas cajas especiales para resaltar ciertos apartados. Lo siguiente es una caja de información (\textbf{infobox}):
 
-Prueba de cautionbox:
-\cautionbox{\Blindtext[1]}
+\infobox{Esto es información que nos viene bien}
 
-Prueba de importantbox:
-\importantbox{\Blindtext[1]}
+Este otro ejemplo es de un \textbf{warningbox}:
+\warnbox{Hay que tener cuidado con lo que aparece aquí}
 
-\awesomebox{5pt}{\faCogs}{black}{\Blindtext[1]}
+Prueba de \textbf{errorbox}:
+\errorbox{Este texto hay que tenerlo muy en cuenta}
 
-\begin{info-box}
-  \notebox{\Blindtext[1]}
-\end{info-box}
-\begin{warning-box}
-  \Blindtext[1]
-\end{warning-box}
 
-\errorbox{\Blindtext[1]}
 
 \part{Part 2}
 \Blinddocument
