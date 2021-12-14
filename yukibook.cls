@@ -58,8 +58,7 @@
 %\definecolor{headerscolor}{HTML}{023b80}
 \definecolor{headerscolor}{HTML}{28436c}
 
-\definecolor{code-bg-color}{HTML}{002b36}
-\definecolor{inline-bg-color}{HTML}{202020}
+\definecolor{inline-bg-color}{HTML}{404040}
 
 \definecolor{error-color}{HTML}{9e0000}
 
@@ -214,10 +213,10 @@
 }
 
 \DeclareTotalTCBox{\commandbox}{ v }
-  {verbatim,colupper=white,colback=black!75!white,colframe=black,breakable=true,enhanced}{\faTerminal\hspace{0pt}  #1}
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,breakable=true,enhanced}{\faTerminal\hspace{0pt}  #1}
 
 \DeclareTotalTCBox{\configfile}{ v }
-{verbatim,colupper=white,colback=black!75!white,colframe=black,breakable=true,enhanced}{\faFile\hspace{0pt}  #1}
+{verbatim,colupper=white,colback=inline-bg-color,colframe=black,breakable=true,enhanced}{\faFile\hspace{0pt}  #1}
 
 
 \newcommand{\itemimage}[6]{
