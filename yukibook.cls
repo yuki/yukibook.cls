@@ -252,7 +252,7 @@
 %--------------------------------------------------------------------------
 % Cover and insertion of table of contents
 %--------------------------------------------------------------------------
-\newcommand{\yukibook}[7]{
+\newcommand{\yukibook}[8]{
 
   \def\@thetitle{#1}
   \def\@theauthor{#2}
@@ -261,6 +261,7 @@
   \def\@thephrase{#5}
   \def\@thephraseauthor{#6}
   \def\@thecoverpath{#7}
+  \def\@minititle{#8}
 
   \thispagestyle{empty}
 
