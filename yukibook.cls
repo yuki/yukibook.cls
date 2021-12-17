@@ -8,6 +8,7 @@
 \RequirePackage[spanish]{babel}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{csquotes}
+\RequirePackage{pifont}
 
 %--------------------------------------------------------------------------
 % Geometry
