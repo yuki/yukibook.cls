@@ -162,6 +162,7 @@
 
 \RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
 \RequirePackage{graphicx}
+\RequirePackage[export]{adjustbox} % frames in graphics
 \RequirePackage{wrapfig}
 \RequirePackage{fontawesome5}
 
