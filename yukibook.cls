@@ -9,6 +9,8 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{csquotes}
 \RequirePackage{pifont}
+\usepackage[none]{hyphenat}
+\sloppy
 
 %--------------------------------------------------------------------------
 % Geometry
@@ -172,6 +174,7 @@
 \RequirePackage{enumitem}
 \setlist{topsep=-5pt}
 
+
 %--------------------------------------------------------------------------
 % Custom color BOXES
 %--------------------------------------------------------------------------
@@ -214,14 +217,17 @@
     list entry={\protect\numberline{\thetcbcounter}#1}
 }
 
+\DeclareTotalTCBox{\inlineconsole}{ v }
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{#1}
+
 \DeclareTotalTCBox{\commandbox}{ v }
-  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,breakable=true,enhanced}{\faTerminal\hspace{0pt}  #1}
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faTerminal\hspace{0pt}  #1}
 
 \DeclareTotalTCBox{\configfile}{ v }
-{verbatim,colupper=white,colback=inline-bg-color,colframe=black,breakable=true,enhanced}{\faFile\hspace{0pt}  #1}
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFile\hspace{0pt}  #1}
 
 \DeclareTotalTCBox{\configdir}{ v }
-{verbatim,colupper=white,colback=inline-bg-color,colframe=black,breakable=true,enhanced}{\faFolderOpen\hspace{0pt}  #1}
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFolderOpen\hspace{0pt}  #1}
 
 
 \newcommand{\itemimage}[6]{
