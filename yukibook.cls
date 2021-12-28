@@ -274,7 +274,10 @@
   \thispagestyle{empty}
 
   \newgeometry{margin=0pt}
-  % Cover inspired by O'reilly books and from https://github.com/johnjohnlin/oreilly_cover
+  %---------------------------------------------------
+  % Cover inspired by O'reilly books
+  % and from   https://github.com/johnjohnlin/oreilly_cover
+  %---------------------------------------------------
   \begin{tcolorbox}[
                 boxrule=0mm,
                 arc=0mm,
@@ -290,6 +293,8 @@
   \end{tcolorbox}
 
   \begin{tcolorbox}[
+                boxrule=0mm,
+                arc=0mm,
                 colframe=white,
                 colback=white,
                 fit to={\paperwidth} and 12.5cm,
@@ -329,11 +334,12 @@
   \end{tcolorbox}
 
   \begin{tcolorbox}[
+                before skip=0cm,
                 boxrule=0mm,
                 colframe=white,
                 colback=white,
                 fit to={\paperwidth} and 2.6cm,
-                fit basedim=110pt,
+                fit basedim=210pt,
                 halign=flush left,
                 left=1cm,
                 valign=top
@@ -342,22 +348,27 @@
       \color{headerscolor}\textbf{\@theyear}
   \end{tcolorbox}
 
+  \clearpage
+
+
   \restoregeometry
-  % Copyright page
   \null
   \vfill
   \begin{flushleft}
     \includegraphics[]{img/seal.png} \\
-    Copyleft \textcopyright \ \@theauthor \\
+    Copyright \textcopyright \ \@theauthor \\
     \vspace{5mm}
     \textbf{Licencia: } \href{https://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons BY-SA 4.0} \\
     \vspace{5mm}
-    Este libro se ha relizado teniendo en cuenta la cultura libre y puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia Attribution-ShareAlike de \textbf{Creative Commons}.
+    Este libro se ha relizado teniendo en cuenta la cultura libre. Puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia \href{https://creativecommons.org/licenses/by-sa/4.0/}{Attribution-ShareAlike} de \textbf{Creative Commons}.
     \vspace{5mm}
   \end{flushleft}
 
   \clearpage
 
+  %---------------------------------------------------
+  % Table of Contents
+  %---------------------------------------------------
   \tableofcontents
 
 } % end of \yukibook
