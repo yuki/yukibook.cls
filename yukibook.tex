@@ -9,6 +9,7 @@
   {\textquote{A very good phrase for a very good book}}	% catch phrase
   {The phrase's author}	% the phrase's author
   {img/cover.png}
+  {28436c} %color in HTML format
 
 %--------------------------------------------------------------------------
 % Start your parts, chapters and sections here
@@ -27,27 +28,18 @@ In this example file I'm going to show all the custom features I'm going to use 
 To use this class there are some requirements that must be working in order to recreate the PDF you are reading.
 \section{\LaTeX{} packages}
 
-This class uses the next \LaTeX{} packages:
-\begin{itemize}
-  \item babel
-  \item geometry
-  \item sourcesanspro
-  \item sourcecodepro
-  \item xcolor
-  \item fancyhdr
-  \item tikz
-  \item titlesec
-  \item hyperref
-  \item tcolorbox
-  \item minted
-\end{itemize}
+This class uses some packages that should be installed with your \LaTeX{} distribution.
+
+You can see all needed packages searching for “RequirePackage” in the \textbf{yukibook.cls} file.
+
+
 
 \section{Command line packages}
-The \LaTeX{} package 'minted' needs the \href{https://pygments.org/}{pygmentize} CLI program to work.
+The \LaTeX{} package 'minted' needs the \href{https://pygments.org/}{pygmentize} CLI program to work. Be sure to have it installed before using the class.
 
 
 \chapter{Examples}
-This class has been done to use it to create technichal books for students where's will appear source code, tips, warnings, ...
+This class has been done to use it to create technichal books for students. In those books will appear source code, tips, warnings, ...
 
 For example, the next code for GNU/Linux console:
 
@@ -60,28 +52,12 @@ There are a lot of possible output examples that can be made:
 \begin{mycode}{lsblk command output}{shell-session}{}
 [root@localhost ~]# lsblk
 NAME                       MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-sda                          8:0    0   1,8T  0 disk
-└─sda1                       8:1    0   1,8T  0 part /home/backup
-sdb                          8:16   0   3,6T  0 disk
-└─sdb1                       8:17   0   3,6T  0 part /home/disco4tb
-sdc                          8:32   0 447,1G  0 disk
-├─sdc1                       8:33   0   529M  0 part
-├─sdc2                       8:34   0   100M  0 part
-├─sdc3                       8:35   0    16M  0 part
-└─sdc4                       8:36   0 446,5G  0 part
 nvme0n1                    259:0    0 931,5G  0 disk
 ├─nvme0n1p1                259:1    0   512M  0 part
 └─nvme0n1p2                259:2    0   800G  0 part /home
 nvme1n1                    259:3    0 931,5G  0 disk
 ├─nvme1n1p1                259:4    0   512M  0 part /boot/efi
-├─nvme1n1p2                259:5    0    90G  0 part /
-├─nvme1n1p3                259:6    0   300G  0 part
-│ ├─VMs-ubuntu--20.04--so1 254:0    0    10G  0 lvm
-│ ├─VMs-OS--X--Monterey    254:1    0   100G  0 lvm
-│ ├─VMs-archlinux          254:2    0    20G  0 lvm
-│ ├─VMs-manjaro--kde       254:3    0    25G  0 lvm
-│ └─VMs-manjaro--gnome     254:4    0    25G  0 lvm
-└─nvme1n1p4                259:7    0 156,2G  0 part
+└─nvme1n1p2                259:5    0    90G  0 part /
 \end{mycode}
 
 

@@ -9,7 +9,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{csquotes}
 \RequirePackage{pifont}
-\usepackage[none]{hyphenat}
+\RequirePackage[none]{hyphenat}
 \sloppy
 
 %--------------------------------------------------------------------------
@@ -58,9 +58,6 @@
 % Color definitions
 %--------------------------------------------------------------------------
 \RequirePackage{xcolor}
-%\definecolor{headerscolor}{HTML}{023b80}
-\definecolor{headerscolor}{HTML}{28436c}
-
 \definecolor{inline-bg-color}{HTML}{404040}
 
 \definecolor{error-color}{HTML}{9e0000}
@@ -171,6 +168,8 @@
 \RequirePackage{caption}
 \captionsetup{labelformat=empty,textfont={scriptsize}}
 
+\RequirePackage[shortcuts]{extdash}
+
 \RequirePackage{enumitem}
 \setlist{topsep=-5pt}
 
@@ -260,7 +259,7 @@
 %--------------------------------------------------------------------------
 % Cover and insertion of table of contents
 %--------------------------------------------------------------------------
-\newcommand{\yukibook}[8]{
+\newcommand{\yukibook}[9]{
 
   \def\@thetitle{#1}
   \def\@theauthor{#2}
@@ -269,7 +268,8 @@
   \def\@thephrase{#5}
   \def\@thephraseauthor{#6}
   \def\@thecoverpath{#7}
-  \def\@minititle{#8}
+  \definecolor{headerscolor}{HTML}{#8}
+  \def\@minititle{#9}
 
   \thispagestyle{empty}
 
@@ -302,7 +302,7 @@
                 valign=center,
                 space to=\myspace,
               ]
-      \includegraphics[height=13cm]{\@thecoverpath}
+      \includegraphics[width=\linewidth,height=13cm,keepaspectratio]{\@thecoverpath}
   \end{tcolorbox}
 
   \begin{tcolorbox}[
