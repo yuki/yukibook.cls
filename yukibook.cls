@@ -57,11 +57,17 @@
 %--------------------------------------------------------------------------
 % Color definitions
 %--------------------------------------------------------------------------
-\RequirePackage{xcolor}
+\RequirePackage[table]{xcolor}
 \definecolor{inline-bg-color}{HTML}{404040}
 
 \definecolor{error-color}{HTML}{9e0000}
 
+%--------------------------------------------------------------------------
+% For tables
+%--------------------------------------------------------------------------
+\RequirePackage{float}
+\RequirePackage{tabularx}
+\RequirePackage{tablestyles}
 
 %--------------------------------------------------------------------------
 % Header and footer styling
