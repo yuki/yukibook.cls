@@ -68,6 +68,9 @@
 \RequirePackage{float}
 \RequirePackage{tabularx}
 \RequirePackage{tablestyles}
+\RequirePackage{multirow}
+\RequirePackage{longtable}
+\RequirePackage{tabularray}
 
 %--------------------------------------------------------------------------
 % Header and footer styling
@@ -136,10 +139,10 @@
 \titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
 
 
-\titleformat{\subparagraph}
-	{\fontsize{12pt}{12pt}\color{headerscolor}}
-	{\thesubsubsection. }{0pt}{}
-\titlespacing*{\subparagraph}{0pt}{0pt}{-1em}
+\titleformat{\paragraph}
+	{\fontsize{11pt}{11pt}\bfseries\color{headerscolor}}
+	{\theparagraph. }{0pt}{\uline}
+\titlespacing*{\paragraph}{0pt}{0pt}{-1em}
 
 
 %--------------------------------------------------------------------------
@@ -167,6 +170,8 @@
 
 \RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
 \RequirePackage{graphicx}
+\RequirePackage{svg} % for svg images
+
 \RequirePackage[export]{adjustbox} % frames in graphics
 \RequirePackage{wrapfig}
 \RequirePackage{fontawesome5}
@@ -361,12 +366,31 @@
   \null
   \vfill
   \begin{flushleft}
-    \includegraphics[]{img/seal.png} \\
-    Copyright \textcopyright \ \@theauthor \\
+    \includegraphics[]{img/seal.png}
+
+    Copyright \textcopyright \ \@theauthor
+    \begin{itemize}
+        \item E-mail: \href{mailto:me@somewhere.com}{rugoli@gmail.com}
+        \item Github: \href{https://github.com/yuki}{https://github.com/yuki}
+        \item Twitter: \href{https://twitter.com/rugoli}{https://twitter.com/rugoli}
+    \end{itemize}
+
+
     \vspace{5mm}
-    \textbf{Licencia: } \href{https://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons BY-SA 4.0} \\
-    \vspace{5mm}
-    Este libro se ha relizado teniendo en cuenta la cultura libre. Puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia \href{https://creativecommons.org/licenses/by-sa/4.0/}{Attribution-ShareAlike} de \textbf{Creative Commons}.
+    \textbf{Licencia: } \href{https://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons BY-SA 4.0}
+
+
+    Este libro se ha relizado teniendo en cuenta la cultura libre. Puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia \href{https://creativecommons.org/licenses/by-sa/4.0/}{Attribution-ShareAlike} de \textbf{Creative Commons}. Es por eso que:
+
+        \begin{itemize}
+            \item \textbf{Atribución}: Debes darme crédito de manera adecuada e incluir un enlace a la licencia e indicar si se han realizado cambios.
+            \item \textbf{CompartirIgual}: Si reutilizas, modificas o creas a partir de este material, debes distribuir el trabajo bajo la misma licencia.
+        \end{itemize}
+
+
+    Puedes encontrar la última versión de este libro en la siguiente URL (\href{https://github.com/yuki/my-books}{https://github.com/yuki/my-books}), así como otros libros que he creado. También podrás descargar el código fuente en formato \LaTeX{}.
+
+    \infobox{\textbf{Si encuentras algún fallo, falta de ortografía o quieres mejorar de alguna manera este libro ponte en contacto conmigo. Gracias.}}
     \vspace{5mm}
   \end{flushleft}
 
