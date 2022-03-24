@@ -1,5 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Yuki's LaTeX template for textbooks.
+%
+% Authors:
+%   Rubén Gómez Olivencia (rugoli@gmail.com)
+%     https://twitter.com/rugoli
+%     https://github.com/yuki/yukibook.cls
+%
+% License:
+%   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%--------------------------------------------------------------------------
+% Class configuration
+%--------------------------------------------------------------------------
+
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{yukibook}[2021/11/24 Free LaTeX text book template]
+\ProvidesClass{yukibook}[2021/11/24 Yuki's template for textbooks]
 \LoadClass[11pt,titlepage,twoside,openany,draft]{book}
 
 %--------------------------------------------------------------------------
@@ -29,7 +46,7 @@
 %--------------------------------------------------------------------------
 % Fonts
 %--------------------------------------------------------------------------
-%\RequirePackage{kpfonts}
+\RequirePackage{fontspec}
 \RequirePackage[default]{sourcesanspro}
 \RequirePackage{sourcecodepro}
 
@@ -65,12 +82,34 @@
 %--------------------------------------------------------------------------
 % For tables
 %--------------------------------------------------------------------------
-\RequirePackage{float}
-\RequirePackage{tabularx}
-\RequirePackage{tablestyles}
-\RequirePackage{multirow}
-\RequirePackage{longtable}
+
 \RequirePackage{tabularray}
+\UseTblrLibrary{varwidth}
+\SetTblrInner{
+    vlines,
+    hlines,
+}
+\NewTblrEnviron{yukitblr}
+\SetTblrInner[yukitblr]{
+    vlines,
+    hlines,
+    row{odd} = {headerscolor!10},
+    row{1} = {bg=headerscolor,fg=white,font=\bfseries},
+    cells={c,m},
+    rowhead=1, %repeat head in new page
+}
+
+\SetTblrOuter[yukitblr]{
+    long,
+    label=none,
+}
+
+\DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
+\DefTblrTemplate{conthead-text}{default}{}
+\DefTblrTemplate{caption}{default}{}
+\DefTblrTemplate{conthead}{default}{}
+\DefTblrTemplate{capcont}{default}{}
+
 
 %--------------------------------------------------------------------------
 % Header and footer styling
@@ -114,34 +153,42 @@
 \titleclass{\chapter}{straight} % removes page break after new chapter
 
 \titleformat{\chapter}[block]
-  {\huge\bfseries\color{headerscolor}} % format of title
-  {\thechapter. }                      % label before title
-  {0pt} % length of separation between label and title
-  {}    % before-code hook
+    {\huge\bfseries\color{headerscolor}} % format of title
+    {\thechapter. }                      % label before title
+    {0pt} % length of separation between label and title
+    {}    % before-code hook
 \titlespacing{\chapter} {0pt}{0pt}{0pt} % with 0pt maintains \parskip space
 
 
 \titleformat{\section}
-	{\fontsize{16pt}{16pt}\bfseries\color{headerscolor}}
-	{\thesection. }{0pt}{}
+    {\fontsize{16pt}{16pt}\bfseries\color{headerscolor}}
+    {\thesection. }
+    {0pt}
+    {}
 \titlespacing*{\section} {0pt}{0pt}{0pt}
 
 
 \titleformat{\subsection}
-	{\fontsize{14pt}{14pt}\bfseries\color{headerscolor}}
-	{\thesubsection. }{0pt}{}
+    {\fontsize{14pt}{14pt}\bfseries\color{headerscolor}}
+    {\thesubsection. }
+    {0pt}
+    {}
 \titlespacing*{\subsection} {0pt}{0pt}{0pt}
 
 
 \titleformat{\subsubsection}
-	{\fontsize{12pt}{12pt}\bfseries\color{headerscolor}}
-	{\thesubsubsection. }{0pt}{}
+    {\fontsize{12pt}{12pt}\bfseries\color{headerscolor}}
+    {\thesubsubsection. }
+    {0pt}
+    {}
 \titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
 
 
 \titleformat{\paragraph}
-	{\fontsize{11pt}{11pt}\bfseries\color{headerscolor}}
-	{\theparagraph. }{0pt}{\uline}
+    {\fontsize{11pt}{11pt}\bfseries\color{headerscolor}}
+    {\theparagraph. }
+    {0pt}
+    {\uline}
 \titlespacing*{\paragraph}{0pt}{0pt}{-1em}
 
 
@@ -287,7 +334,7 @@
   \newgeometry{margin=0pt}
   %---------------------------------------------------
   % Cover inspired by O'reilly books
-  % and from   https://github.com/johnjohnlin/oreilly_cover
+  % and from https://github.com/johnjohnlin/oreilly_cover
   %---------------------------------------------------
   \begin{tcolorbox}[
                 boxrule=0mm,
@@ -361,16 +408,17 @@
 
   \clearpage
 
-
+  %---------------------------------------------------
+  % First page with book license
+  %---------------------------------------------------
   \restoregeometry
   \null
   \vfill
   \begin{flushleft}
     \includegraphics[]{img/seal.png}
 
-    Copyright \textcopyright \ \@theauthor
+    Copyright \textcopyright \ \@theauthor \hspace{1pt} (\href{mailto:me@somewhere.com}{rugoli@gmail.com})
     \begin{itemize}
-        \item E-mail: \href{mailto:me@somewhere.com}{rugoli@gmail.com}
         \item Github: \href{https://github.com/yuki}{https://github.com/yuki}
         \item Twitter: \href{https://twitter.com/rugoli}{https://twitter.com/rugoli}
     \end{itemize}
@@ -390,7 +438,7 @@
 
     Puedes encontrar la última versión de este libro en la siguiente URL (\href{https://github.com/yuki/my-books}{https://github.com/yuki/my-books}), así como otros libros que he creado. También podrás descargar el código fuente en formato \LaTeX{}.
 
-    \infobox{\textbf{Si encuentras algún fallo, falta de ortografía o quieres mejorar de alguna manera este libro ponte en contacto conmigo. Gracias.}}
+    \infobox{\textbf{Por favor, ponte en contacto conmigo si encuentras algún fallo, falta de ortografía o quieres mejorar de alguna manera este libro. Gracias.}}
     \vspace{5mm}
   \end{flushleft}
 

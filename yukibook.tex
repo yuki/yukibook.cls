@@ -41,6 +41,9 @@ The \LaTeX{} package 'minted' needs the \href{https://pygments.org/}{pygmentize}
 \chapter{Examples}
 This class has been done to use it to create technichal books for students. In those books will appear source code, tips, warnings, ...
 
+\section{Custom code boxes}
+I have created a custom box, using the \textbf{tcolorbox} package, called \textbf{mycode}.
+
 For example, the next code for GNU/Linux console:
 
 \begin{mycode}{Journald configuration file}{console}{}
@@ -87,6 +90,36 @@ Este otro ejemplo es de un \textbf{warningbox}:
 
 Prueba de \textbf{errorbox}:
 \errorbox{Este texto hay que tenerlo muy en cuenta}
+
+
+\section{Custom tables}
+
+Custom tables created using the package \textbf{tabularray}, and the custom table name is \textbf{yukitblr}:
+
+\begin{yukitblr}{XXX}
+    Head & Head & Head \\
+    Alpha & Beta & Gamma \\
+    Delta & Epsilon & Zeta  \\
+    Eta & Theta & Iota \\
+    Kappa & Lambda & Mu \\
+    Nu & Xi & Omicron \\
+    Pi & Rho & Sigma \\
+    Tau & Upsilon & Phi \\
+\end{yukitblr}
+
+Another table with more text in it. To use lists inside tables it must add “measure=vbox” to the table
+
+\begin{yukitblr}{colspec={X[j]X},measure=vbox}
+    Head & Head \\
+    one & two   \\
+    \blindtext[1] & two  \\
+    \begin{itemize}
+        \item qwe
+        \item qwe
+        \item qwe
+        \item qwe
+    \end{itemize} & two  \\
+\end{yukitblr}
 
 
 

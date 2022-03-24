@@ -59,6 +59,7 @@ In order to create the pdf you need all the dependencies the class needs. All of
 - extdash
 - fancyhdr
 - fontawesome5
+- fontspec
 - geometry
 - graphicx
 - href-ul
@@ -69,6 +70,8 @@ In order to create the pdf you need all the dependencies the class needs. All of
 - pmboxdraw
 - sourcecodepro
 - sourcesanspro
+- svg
+- tabularray
 - tcolorbox
 - tikz
 - titlesec
