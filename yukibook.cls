@@ -99,7 +99,7 @@
     row{odd} = {headerscolor!10},
     row{1} = {bg=headerscolor,fg=white,font=\bfseries},
     cells={c,m},
-    rowhead=1, %repeat head in new page
+%    rowhead=1, %repeat head in new page
 }
 
 \SetTblrOuter[yukitblr]{
