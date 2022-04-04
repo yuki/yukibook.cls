@@ -1,0 +1,87 @@
+%---------------------------------------------------
+% Cover page (for A4 pagestyle)
+% to add it:   \coverpage
+%---------------------------------------------------
+
+\newcommand{\coverpage}[0]{
+
+\thispagestyle{empty}
+\newgeometry{margin=0pt}
+%---------------------------------------------------
+% Cover inspired by O'reilly books
+% and from https://github.com/johnjohnlin/oreilly_cover
+%---------------------------------------------------
+\begin{tcolorbox}[
+    boxrule=0mm,
+    arc=0mm,
+    colframe=headerscolor,
+    colback=headerscolor,
+    fit to={\paperwidth} and 2.5cm,
+    fit basedim=130pt,
+    halign=flush center,
+    valign=center,
+    top=1mm,bottom=1mm
+    ]
+    \color{white}\textbf{\textit{\@thedegree}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[
+    boxrule=0mm,
+    arc=0mm,
+    colframe=white,
+    colback=white,
+    fit to={\paperwidth} and 12.5cm,
+    halign=flush center,
+    valign=center,
+    space to=\myspace,
+    ]
+    \includegraphics[width=\linewidth,height=13cm,keepaspectratio]{\@thecoverpath}
+\end{tcolorbox}
+
+\begin{tcolorbox}[
+    boxrule=0mm,
+    arc=0mm,
+    colframe=headerscolor,
+    colback=headerscolor,
+    fit to={\paperwidth} and 8cm,
+    fit basedim=130pt,
+    halign=flush center,
+    valign=center,
+    top=1cm,bottom=1cm,
+    ]
+    \color{white}\textbf{\textit{\@thetitle}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[
+    boxrule=0mm,
+    colframe=white,
+    colback=white,
+    fit to={\paperwidth} and 2cm,
+    halign=flush right,
+    valign=top,
+    left=8cm,
+    right=1cm
+    ]
+    \Large{\color{headerscolor}\textit{\@thephrase}} \\
+    \small{\color{headerscolor}\textit{\@thephraseauthor}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[
+    before skip=0cm,
+    boxrule=0mm,
+    colframe=white,
+    colback=white,
+    fit to={\paperwidth} and 2.6cm,
+    fit basedim=210pt,
+    halign=flush left,
+    left=1cm,
+    valign=top
+    ]
+    \color{headerscolor}\textbf{\@theauthor} \linebreak
+    \color{headerscolor}\textbf{\@theyear}
+\end{tcolorbox}
+
+\restoregeometry
+\clearpage
+
+} % end of /coverpage command

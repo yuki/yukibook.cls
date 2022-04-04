@@ -1,15 +1,22 @@
-\documentclass{yukibook}
+\newcommand{\ClassPath}{.}
+\documentclass{\ClassPath/yukibook}
 
 \begin{document}
 
-\yukibook{The Title \linebreak of the Book} 	% Title
+\yukibook{The Title \linebreak of the Book} % Title
   {Rubén Gómez Olivencia}  % Author
   {2021-2022}    % Year
   {The name \linebreak of the degree} % Name of degree
-  {\textquote{A very good phrase for a very good book}}	% catch phrase
-  {The phrase's author}	% the phrase's author
+  {\textquote{A very good phrase for a very good book}} % catch phrase
+  {The phrase's author} % the phrase's author
   {img/cover.png}
-  {28436c} %color in HTML format
+  {28436c} % color in HTML format
+
+\coverpage
+\licensepage
+
+\tableofcontents
+
 
 %--------------------------------------------------------------------------
 % Start your parts, chapters and sections here

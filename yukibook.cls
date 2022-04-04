@@ -70,6 +70,7 @@
   \clearpage
 }
 
+\@addtoreset{chapter}{part}
 
 %--------------------------------------------------------------------------
 % Color definitions
@@ -317,138 +318,21 @@
 
 
 %--------------------------------------------------------------------------
-% Cover and insertion of table of contents
+% Cover's and book information's info command
 %--------------------------------------------------------------------------
 \newcommand{\yukibook}[9]{
 
-  \def\@thetitle{#1}
-  \def\@theauthor{#2}
-  \def\@theyear{#3}
-  \def\@thedegree{#4}
-  \def\@thephrase{#5}
-  \def\@thephraseauthor{#6}
-  \def\@thecoverpath{#7}
-  \definecolor{headerscolor}{HTML}{#8}
-  \def\@minititle{#9}
-
-  \thispagestyle{empty}
-
-  \newgeometry{margin=0pt}
-  %---------------------------------------------------
-  % Cover inspired by O'reilly books
-  % and from https://github.com/johnjohnlin/oreilly_cover
-  %---------------------------------------------------
-  \begin{tcolorbox}[
-                boxrule=0mm,
-                arc=0mm,
-                colframe=headerscolor,
-                colback=headerscolor,
-                fit to={\paperwidth} and 2.5cm,
-                fit basedim=130pt,
-                halign=flush center,
-                valign=center,
-                top=1mm,bottom=1mm
-              ]
-      \color{white}\textbf{\textit{\@thedegree}}
-  \end{tcolorbox}
-
-  \begin{tcolorbox}[
-                boxrule=0mm,
-                arc=0mm,
-                colframe=white,
-                colback=white,
-                fit to={\paperwidth} and 12.5cm,
-                halign=flush center,
-                valign=center,
-                space to=\myspace,
-              ]
-      \includegraphics[width=\linewidth,height=13cm,keepaspectratio]{\@thecoverpath}
-  \end{tcolorbox}
-
-  \begin{tcolorbox}[
-                boxrule=0mm,
-                arc=0mm,
-                colframe=headerscolor,
-                colback=headerscolor,
-                fit to={\paperwidth} and 8cm,
-                fit basedim=130pt,
-                halign=flush center,
-                valign=center,
-                top=1cm,bottom=1cm,
-              ]
-        \color{white}\textbf{\textit{\@thetitle}}
-  \end{tcolorbox}
-
-  \begin{tcolorbox}[
-                boxrule=0mm,
-                colframe=white,
-                colback=white,
-                fit to={\paperwidth} and 2cm,
-                halign=flush right,
-                valign=top,
-                left=8cm,
-                right=1cm
-              ]
-      \Large{\color{headerscolor}\textit{\@thephrase}} \\
-      \small{\color{headerscolor}\textit{\@thephraseauthor}}
-  \end{tcolorbox}
-
-  \begin{tcolorbox}[
-                before skip=0cm,
-                boxrule=0mm,
-                colframe=white,
-                colback=white,
-                fit to={\paperwidth} and 2.6cm,
-                fit basedim=210pt,
-                halign=flush left,
-                left=1cm,
-                valign=top
-              ]
-      \color{headerscolor}\textbf{\@theauthor} \linebreak
-      \color{headerscolor}\textbf{\@theyear}
-  \end{tcolorbox}
-
-  \clearpage
-
-  %---------------------------------------------------
-  % First page with book license
-  %---------------------------------------------------
-  \restoregeometry
-  \null
-  \vfill
-  \begin{flushleft}
-    \includegraphics[]{img/seal.png}
-
-    Copyright \textcopyright \ \@theauthor \hspace{1pt} (\href{mailto:me@somewhere.com}{rugoli@gmail.com})
-    \begin{itemize}
-        \item Github: \href{https://github.com/yuki}{https://github.com/yuki}
-        \item Twitter: \href{https://twitter.com/rugoli}{https://twitter.com/rugoli}
-    \end{itemize}
-
-
-    \vspace{5mm}
-    \textbf{Licencia: } \href{https://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons BY-SA 4.0}
-
-
-    Este libro se ha relizado teniendo en cuenta la cultura libre. Puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia \href{https://creativecommons.org/licenses/by-sa/4.0/}{Attribution-ShareAlike} de \textbf{Creative Commons}. Es por eso que:
-
-        \begin{itemize}
-            \item \textbf{Atribución}: Debes darme crédito de manera adecuada e incluir un enlace a la licencia e indicar si se han realizado cambios.
-            \item \textbf{CompartirIgual}: Si reutilizas, modificas o creas a partir de este material, debes distribuir el trabajo bajo la misma licencia.
-        \end{itemize}
-
-
-    Puedes encontrar la última versión de este libro en la siguiente URL (\href{https://github.com/yuki/my-books}{https://github.com/yuki/my-books}), así como otros libros que he creado. También podrás descargar el código fuente en formato \LaTeX{}.
-
-    \infobox{\textbf{Por favor, ponte en contacto conmigo si encuentras algún fallo, falta de ortografía o quieres mejorar de alguna manera este libro. Gracias.}}
-    \vspace{5mm}
-  \end{flushleft}
-
-  \clearpage
-
-  %---------------------------------------------------
-  % Table of Contents
-  %---------------------------------------------------
-  \tableofcontents
-
+  \def\@thetitle{#1}        % Title of the book
+  \def\@theauthor{#2}       % Author
+  \def\@theyear{#3}         % Year
+  \def\@thedegree{#4}       % Name of degree
+  \def\@thephrase{#5}       % catch phrase
+  \def\@thephraseauthor{#6} % the phrase's author
+  \def\@thecoverpath{#7}    % cover's image
+  \definecolor{headerscolor}{HTML}{#8}  % cover's and header's color in HTML format
+  \def\@minititle{#9}       % custom name
 } % end of \yukibook
+
+
+\input{\ClassPath/coverpage}
+\input{\ClassPath/licensepage}
