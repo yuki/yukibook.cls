@@ -93,6 +93,8 @@
 \SetTblrInner[yukitblr]{
     vlines,
     hlines,
+    rowsep=6pt,
+    colsep=12pt,
     row{odd} = {headerscolor!10},
     row{1} = {bg=headerscolor,fg=white,font=\bfseries},
     cells={c,m},
