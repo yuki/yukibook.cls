@@ -213,7 +213,8 @@
 % Needed dependencies
 %--------------------------------------------------------------------------
 \RequirePackage{tcolorbox}
-\tcbuselibrary{raster,fitting,minted,many,listings,breakable}
+\tcbuselibrary{raster,fitting,minted,many,listings,breakable,skins}
+\usetikzlibrary{decorations.pathmorphing}
 \usemintedstyle{friendly}
 %\setmintedinline[console]{style=colorful}
 
@@ -239,6 +240,7 @@
 % Custom color BOXES
 %--------------------------------------------------------------------------
 \newcommand{\custombox}[5]{
+%    \vspace{10pt}
     \begin{tcolorbox}[
         colframe=#1, colbacktitle=#1,
         colupper=#1, colback=#2,
@@ -252,6 +254,7 @@
       \color{#1}
       #5
     \end{tcolorbox}
+%    \vspace{10pt}
 }
 %% Inspired on awesomebox
 \newcommand{\infobox}[1]{
@@ -289,6 +292,10 @@
 \DeclareTotalTCBox{\configdir}{ v }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFolderOpen\hspace{0pt}  #1}
 
+
+\definecolor{imdb}{HTML}{f5c518}
+\DeclareTotalTCBox{\movie}{ v v}
+{verbatim,colback=white,colframe=imdb,enhanced}{\faFileVideo\hspace{0pt}  \href{#1}{#2}}
 
 \newcommand{\itemimage}[6]{
   % #1 item text
