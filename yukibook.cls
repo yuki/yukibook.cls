@@ -70,8 +70,6 @@
   \clearpage
 }
 
-\@addtoreset{chapter}{part}
-
 %--------------------------------------------------------------------------
 % Color definitions
 %--------------------------------------------------------------------------
@@ -208,6 +206,11 @@
 }
 \RequirePackage{href-ul}
 
+%https://stackoverflow.com/questions/28329519/toc-links-point-to-wrong-pages
+% but I don't need it
+%\renewcommand{\theHsection}{\thepart.section.\thesection}
+% reset chapter counts after part
+\@addtoreset{chapter}{part}
 
 %--------------------------------------------------------------------------
 % Needed dependencies
