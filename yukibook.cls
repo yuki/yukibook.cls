@@ -105,6 +105,23 @@
     label=none,
 }
 
+
+\NewTblrEnviron{yukitblrcol}
+\SetTblrInner[yukitblrcol]{
+    vlines,
+    hlines,
+    hline{1,1}={wd=0pt},
+    vline{1,1}={wd=0pt},
+    rowsep=6pt,
+    colsep=12pt,
+    row{odd} = {headerscolor!10},
+    row{1} = {bg=headerscolor,fg=white,font=\bfseries},
+    column{1} = {bg=headerscolor,fg=white,font=\bfseries},
+    cells={c,m},
+    cell{1}{1}={bg=white},
+    %    rowhead=1, %repeat head in new page
+}
+
 \DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
 \DefTblrTemplate{conthead-text}{default}{}
 \DefTblrTemplate{caption}{default}{}
