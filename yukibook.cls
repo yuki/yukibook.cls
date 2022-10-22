@@ -122,6 +122,11 @@
     %    rowhead=1, %repeat head in new page
 }
 
+\SetTblrOuter[yukitblrcol]{
+    long,
+    label=none,
+}
+
 \DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
 \DefTblrTemplate{conthead-text}{default}{}
 \DefTblrTemplate{caption}{default}{}
