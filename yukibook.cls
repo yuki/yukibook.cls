@@ -260,6 +260,8 @@
 \RequirePackage{enumitem}
 \setlist{topsep=-5pt}
 
+% to include other files sections by tags
+\usepackage{catchfilebetweentags}
 
 %--------------------------------------------------------------------------
 % Custom color BOXES
