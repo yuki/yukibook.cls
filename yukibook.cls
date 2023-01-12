@@ -110,8 +110,8 @@
 \SetTblrInner[yukitblrcol]{
     vlines,
     hlines,
-    hline{1,1}={wd=0pt},
-    vline{1,1}={wd=0pt},
+    hline{1}={1}{1}{0pt},
+    vline{1}={1}{1}{0pt},
     rowsep=6pt,
     colsep=12pt,
     row{odd} = {headerscolor!10},
