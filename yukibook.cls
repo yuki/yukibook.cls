@@ -54,6 +54,7 @@
 %--------------------------------------------------------------------------
 % TOC
 %--------------------------------------------------------------------------
+\RequirePackage{titletoc}
 \renewcommand\@dotsep{200}
 
 \renewcommand\tableofcontents{
@@ -61,14 +62,39 @@
     \hypersetup{hidelinks} % hide links in TOC, too much blue in it
 
     \chapter*{\contentsname}
-    \setcounter{tocdepth}{3}    % add to TOC subsubsections
-    \setcounter{secnumdepth}{3} % add to subsubsections labels
+    \setcounter{tocdepth}{2}    % add to TOC subsubsections
+    \setcounter{secnumdepth}{2} % add to subsubsections labels
     \setlength{\parskip}{0em}
       \@starttoc{toc}
     \setlength{\parskip}{1.2em}
   \endgroup
   \clearpage
 }
+
+% inspired by https://www.latextemplates.com/template/the-legrand-orange-book
+% Styling of unnumbered parts in the table of contents
+\newcommand{\tocentrypartunnumbered}[1]{%
+    \setlength\fboxsep{0pt}% Remove box padding
+    \contentslabel[%
+    % Part title box
+    \colorbox{headerscolor}{% Background color
+        \strut\parbox[c][.7cm]{\linewidth}{% Box size
+            \centering\Large\sffamily #1% Part title
+        }%
+    }%
+    ]{1.25cm}
+}
+
+
+\titlecontents{part} % Section type being modified
+[1.25cm] % Left indentation
+{\addvspace{20pt}\color{white}\Large\sffamily\bfseries\hypersetup{linkcolor=white}} % Before code
+{} % Formatting of numbered sections of this type
+{\tocentrypartunnumbered} % Formatting of numberless sections of this type
+{} % Formatting of the filler to the right of the heading and the page number
+[] % After code
+
+
 
 %--------------------------------------------------------------------------
 % Color definitions
