@@ -62,7 +62,7 @@
     \hypersetup{hidelinks} % hide links in TOC, too much blue in it
 
     \chapter*{\contentsname}
-    \setcounter{tocdepth}{2}    % add to TOC subsubsections
+    \setcounter{tocdepth}{1}    % add to TOC subsubsections
     \setcounter{secnumdepth}{2} % add to subsubsections labels
     \setlength{\parskip}{0em}
       \@starttoc{toc}
@@ -170,6 +170,38 @@
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt} %remove the header's rule
 
+
+% de https://tex.stackexchange.com/questions/13387/how-to-get-part-name-in-latex
+\directlua{partcount = 0}
+\newcommand*\partnumber{}
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+    \ifx\\#1\\% optional argument not present?
+    \origpart{#2}%
+    \renewcommand*\parttitle{#2}%
+    \else
+    \origpart[#1]{#2}%
+    \renewcommand*\parttitle{#1}%
+    \fi
+    \directlua{partcount = partcount + 1}%
+    \renewcommand*\partnumber{\directlua{tex.sprint(partcount)}}%
+}
+
+
+\fancyhead[LE]{
+    \color{headerscolor}\footnotesize\textit{\uppercase\expandafter{\romannumeral \partnumber}. \parttitle}
+    \vspace{-5pt}
+
+    \color{headerscolor}\hrulefill
+}
+\fancyhead[RO]{
+    \color{headerscolor}\footnotesize\textit{\nouppercase\leftmark}
+    \vspace{-5pt}
+
+    \color{headerscolor}\hrulefill
+}
+
 \fancyfoot{} % clear all footer fields
 \fancyfoot[LE]{
   \begin{tikzpicture}
@@ -178,7 +210,7 @@
   \end{tikzpicture}
   \begin{tikzpicture}
     \path (0, 0);
-    \node at (0,0.35){\color{headerscolor}\footnotesize\textit{\@thetitle}};
+    \node at (0,0.35){\color{headerscolor}\footnotesize\textit{\@thedegree}};
   \end{tikzpicture}
 }
 \fancyfoot[RO]{
@@ -189,7 +221,8 @@
   \begin{tikzpicture}
     \path [fill=headerscolor] (0, 0) rectangle (0.8, 0.8);
     \node [white] at (0.4,0.4) {\textbf{\thepage}};
-  \end{tikzpicture}}
+  \end{tikzpicture}
+}
 
 % TODO: change "\part"'s footer
 
