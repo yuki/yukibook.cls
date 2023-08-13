@@ -326,6 +326,8 @@
 % Custom color BOXES
 %--------------------------------------------------------------------------
 \newcommand{\custombox}[5]{
+    \def\a{#3}
+    \def\b{Ejercicio}
 %    \vspace{10pt}
     \begin{tcolorbox}[
         colframe=#1, colbacktitle=#1,
@@ -337,7 +339,10 @@
       \color{#1}
       \fontsize{30pt}{-10pt}#4
       \tcblower
-      \color{#1}
+      \ifx\a\b
+      \else
+        \color{#1}
+      \fi
       #5
     \end{tcolorbox}
 %    \vspace{10pt}
@@ -353,6 +358,10 @@
 
 \newcommand{\errorbox}[1]{
     \custombox{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}{#1}
+}
+
+\newcommand{\exercisebox}[1]{
+    \custombox{teal}{white}{Ejercicio}{\faCog}{#1}
 }
 
 %--------------------------------------------------------------------------
