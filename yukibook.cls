@@ -185,12 +185,17 @@
     \renewcommand*\parttitle{#1}%
     \fi
     \directlua{partcount = partcount + 1}%
-    \renewcommand*\partnumber{\directlua{tex.sprint(partcount)}}%
+    \renewcommand*\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}%
 }
 
+%\pretocmd{\@part}{
+%    \gdef\parttitle{#1}
+%    \directlua{partcount = partcount + 1}
+%    \gdef\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}
+%}{}{}
 
 \fancyhead[LE]{
-    \color{headerscolor}\footnotesize\textit{\uppercase\expandafter{\romannumeral \partnumber}. \parttitle}
+    \color{headerscolor}\footnotesize\textit{\partnumber. \parttitle}
     \vspace{-5pt}
 
     \color{headerscolor}\hrulefill
