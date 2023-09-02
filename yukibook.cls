@@ -99,7 +99,7 @@
 %--------------------------------------------------------------------------
 % Color definitions
 %--------------------------------------------------------------------------
-\RequirePackage[table]{xcolor}
+\RequirePackage[svgnames,table]{xcolor}
 \definecolor{inline-bg-color}{HTML}{404040}
 
 \definecolor{error-color}{HTML}{9e0000}
@@ -109,6 +109,7 @@
 %--------------------------------------------------------------------------
 
 \RequirePackage{tabularray}
+\RequirePackage{pdflscape} %change page orientation
 \UseTblrLibrary{varwidth}
 \SetTblrInner{
     vlines,
@@ -153,6 +154,29 @@
     label=none,
 }
 
+
+\NewTblrEnviron{rubrica}
+\SetTblrInner[rubrica]{
+    vlines,
+    hlines,
+    hline{1}={1}{1}{0pt},
+    vline{1}={1}{1}{0pt},
+    cell{1}{2}={bg=SeaGreen},
+    cell{1}{3}={bg=DarkSeaGreen},
+    cell{1}{4}={bg=SandyBrown},
+    cell{1}{5}={bg=Tomato},
+    column{1} = {bg=headerscolor,fg=white,font=\bfseries},
+    cells={l,t},
+    row{1} = {font=\bfseries, c},
+    cell{1}{1}={bg=white},
+    %    rowhead=1, %repeat head in new page
+}
+
+\SetTblrOuter[rubrica]{
+    long,
+    label=none,
+}
+
 \DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
 \DefTblrTemplate{conthead-text}{default}{}
 \DefTblrTemplate{caption}{default}{}
@@ -165,6 +189,7 @@
 %--------------------------------------------------------------------------
 \RequirePackage{tikz}
 \RequirePackage{fancyhdr}
+\RequirePackage{extramarks}
 \pagestyle{fancy}
 
 \fancyhead{} % clear all header fields
@@ -200,8 +225,9 @@
 
     \color{headerscolor}\hrulefill
 }
+
 \fancyhead[RO]{
-    \color{headerscolor}\footnotesize\textit{\nouppercase\leftmark}
+    \color{headerscolor}\footnotesize\textit{\nouppercase\firstleftmark}
     \vspace{-5pt}
 
     \color{headerscolor}\hrulefill
