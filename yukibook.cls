@@ -195,30 +195,7 @@
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt} %remove the header's rule
 
-
-% de https://tex.stackexchange.com/questions/13387/how-to-get-part-name-in-latex
-\directlua{partcount = 0}
-\newcommand*\partnumber{}
-\newcommand*\parttitle{}
-\let\origpart\part
-\renewcommand*{\part}[2][]{%
-    \ifx\\#1\\% optional argument not present?
-    \origpart{#2}%
-    \renewcommand*\parttitle{#2}%
-    \else
-    \origpart[#1]{#2}%
-    \renewcommand*\parttitle{#1}%
-    \fi
-    \directlua{partcount = partcount + 1}%
-    \renewcommand*\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}%
-}
-
-%\pretocmd{\@part}{
-%    \gdef\parttitle{#1}
-%    \directlua{partcount = partcount + 1}
-%    \gdef\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}
-%}{}{}
-
+%\partnumber and \parttitle are commands defined in line ~270
 \fancyhead[LE]{
     \color{headerscolor}\footnotesize\textit{\partnumber. \parttitle}
     \vspace{-5pt}
@@ -255,19 +232,62 @@
   \end{tikzpicture}
 }
 
-% TODO: change "\part"'s footer
-
 
 %--------------------------------------------------------------------------
 % Chapters and Titles definitions
 %--------------------------------------------------------------------------
-\RequirePackage{titlesec}
+\RequirePackage[
+    explicit, % Specify section names explicitly in \titleformat with #1
+%    newparttoc, % Required for writing the part toc entry number in a standard way (overriding default LaTeX behavior) so the titletoc package can style it
+]{titlesec}
+
+% Command to create and output the parts pages
+% Inspired by “The Legrand Orange Book”: https://www.latextemplates.com/template/the-legrand-orange-book
+\newcommand{\outputpartpage}[2]{
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=center, rectangle, fill=headerscolor, inner sep=0pt, minimum height=\paperheight, minimum width=\paperwidth] at (current page.center) {}; % Background color
+    \end{tikzpicture}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west, inner ysep=0pt] at (current page.north west) {\fontsize{220pt}{220pt}\selectfont\sffamily\bfseries\textcolor{headerscolor!40}{#1}}; % Part number
+    \end{tikzpicture}
+    \begin{center}
+        %part title
+        \fontsize{70pt}{70pt}\selectfont\sffamily\bfseries\textcolor{white}{#2}
+    \end{center}
+}
+
+\titleformat{\part}[block] % Shape type, can be: hang, block, display, runin, leftmargin, rightmargin, drop, wrap, frame
+    {\outputpartpage{\thepart}{#1}} % format of title
+    {} % label before title
+    {0em} % Space between the title and label
+    {} % before-code hook
+
+
+% de https://tex.stackexchange.com/questions/13387/how-to-get-part-name-in-latex
+% esta función tiene que estar aquí para que funcionen las cabeceras de la izquierda
+\directlua{partcount = 0}
+\newcommand*\partnumber{}
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+    \ifx\\#1\\% optional argument not present?
+    \origpart{#2}%
+    \renewcommand*\parttitle{#2}%
+    \else
+    \origpart[#1]{#2}%
+    \renewcommand*\parttitle{#1}%
+    \fi
+    \directlua{partcount = partcount + 1}%
+    \renewcommand*\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}%
+}
+
 
 \titleclass{\chapter}{straight} % removes page break after new chapter
 
 \titleformat{\chapter}[block]
     {\huge\bfseries\color{headerscolor}} % format of title
-    {\thechapter. }                      % label before title
+    {\thechapter. #1} % label before title
     {0pt} % length of separation between label and title
     {}    % before-code hook
 \titlespacing{\chapter} {0pt}{0pt}{0pt} % with 0pt maintains \parskip space
@@ -275,7 +295,7 @@
 
 \titleformat{\section}
     {\fontsize{16pt}{16pt}\bfseries\color{headerscolor}}
-    {\thesection. }
+    {\thesection. #1}
     {0pt}
     {}
 \titlespacing*{\section} {0pt}{0pt}{0pt}
@@ -283,7 +303,7 @@
 
 \titleformat{\subsection}
     {\fontsize{14pt}{14pt}\bfseries\color{headerscolor}}
-    {\thesubsection. }
+    {\thesubsection. #1}
     {0pt}
     {}
 \titlespacing*{\subsection} {0pt}{0pt}{0pt}
@@ -291,7 +311,7 @@
 
 \titleformat{\subsubsection}
     {\fontsize{12pt}{12pt}\bfseries\color{headerscolor}}
-    {\thesubsubsection. }
+    {\thesubsubsection. #1}
     {0pt}
     {}
 \titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
@@ -299,7 +319,7 @@
 
 \titleformat{\paragraph}
     {\fontsize{11pt}{11pt}\bfseries\color{headerscolor}}
-    {\theparagraph. }
+    {\theparagraph. #1}
     {0pt}
     {\uline}
 \titlespacing*{\paragraph}{0pt}{0pt}{-1em}
