@@ -387,43 +387,42 @@
 %--------------------------------------------------------------------------
 % Custom color BOXES
 %--------------------------------------------------------------------------
-\newcommand{\custombox}[5]{
-    \def\a{#3}
-    \def\b{Ejercicio}
+\newcommand{\custombox}[6]{
 %    \vspace{10pt}
     \begin{tcolorbox}[
         colframe=#1, colbacktitle=#1,
-        colupper=#1, colback=#2,
+        colupper=#1, colback=#3,
         enhanced, sidebyside, segmentation hidden,
         lefthand width=1.2cm,
-        title=\textbf{#3},]
+        title=\textbf{#4},]
       \centering
       \color{#1}
-      \fontsize{30pt}{-10pt}#4
+      \fontsize{30pt}{-10pt}#5
       \tcblower
-      \ifx\a\b
-      \else
-        \color{#1}
-      \fi
-      #5
+        \color{#2}
+      #6
     \end{tcolorbox}
 %    \vspace{10pt}
 }
 %% Inspired on awesomebox
 \newcommand{\infobox}[1]{
-    \custombox{cyan!60!black}{cyan!5!white}{Información}{\faInfoCircle}{#1}
+    \custombox{cyan!60!black}{black}{cyan!5!white}{Información}{\faInfoCircle}{#1}
 }
 
 \newcommand{\warnbox}[1]{
-    \custombox{orange!80!black}{orange!5!white}{¡Atención!}{\faExclamationCircle}{#1}
+    \custombox{orange!80!black}{black}{orange!5!white}{¡Atención!}{\faExclamationCircle}{#1}
 }
 
 \newcommand{\errorbox}[1]{
-    \custombox{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}{#1}
+    \custombox{error-color}{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}{#1}
+}
+
+\newcommand{\questionbox}[1]{
+    \custombox{Goldenrod!90}{black}{white}{Pregunta}{\faQuestionCircle}{#1}
 }
 
 \newcommand{\exercisebox}[1]{
-    \custombox{teal}{white}{Ejercicio}{\faCog}{#1}
+    \custombox{teal}{black}{white}{Ejercicio}{\faCog}{#1}
 }
 
 %--------------------------------------------------------------------------
