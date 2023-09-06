@@ -60,14 +60,15 @@
 \renewcommand\tableofcontents{
   \begingroup
     \hypersetup{hidelinks} % hide links in TOC, too much blue in it
-
-    \chapter*{\contentsname}
+    \pagestyle{toc}
+%    \chapter*{\contentsname}
     \setcounter{tocdepth}{1}    % add to TOC subsubsections
     \setcounter{secnumdepth}{2} % add to subsubsections labels
     \setlength{\parskip}{0em}
       \@starttoc{toc}
     \setlength{\parskip}{1.2em}
   \endgroup
+  \thispagestyle{toc} % TODO: don't know why I need this here
   \clearpage
 }
 
@@ -230,6 +231,16 @@
     \path [fill=headerscolor] (0, 0) rectangle (0.8, 0.8);
     \node [white] at (0.4,0.4) {\textbf{\thepage}};
   \end{tikzpicture}
+}
+
+% for TOC
+\fancypagestyle{toc}[fancy]{%
+    \fancyhead[LE,RO]{
+        \color{headerscolor}\footnotesize\textit{Índice}
+        \vspace{-5pt}
+
+        \color{headerscolor}\hrulefill
+    }
 }
 
 
