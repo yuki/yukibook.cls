@@ -62,7 +62,7 @@
     \hypersetup{hidelinks} % hide links in TOC, too much blue in it
     \pagestyle{toc}
 %    \chapter*{\contentsname}
-    \setcounter{tocdepth}{1}    % add to TOC subsubsections
+    \setcounter{tocdepth}{2}    % add to TOC subsubsections
     \setcounter{secnumdepth}{2} % add to subsubsections labels
     \setlength{\parskip}{0em}
       \@starttoc{toc}
@@ -317,6 +317,13 @@
     {\thesubsection. #1}
     {0pt}
     {}
+
+\titleformat{name=\subsection,numberless}
+    {\fontsize{14pt}{14pt}\bfseries\color{headerscolor}}
+    {#1}
+    {0pt}
+    {}
+
 \titlespacing*{\subsection} {0pt}{0pt}{0pt}
 
 
@@ -325,6 +332,13 @@
     {\thesubsubsection. #1}
     {0pt}
     {}
+
+\titleformat{name=\subsubsection,numberless}
+    {\fontsize{12pt}{12pt}\bfseries\color{headerscolor}}
+    {\thesubsubsection. #1}
+    {0pt}
+    {}
+
 \titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
 
 
