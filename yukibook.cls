@@ -63,7 +63,7 @@
     \pagestyle{toc}
 %    \chapter*{\contentsname}
     \setcounter{tocdepth}{2}    % add to TOC subsubsections
-    \setcounter{secnumdepth}{2} % add to subsubsections labels
+    \setcounter{secnumdepth}{4} % add to subsubsections labels
     \setlength{\parskip}{0em}
       \@starttoc{toc}
     \setlength{\parskip}{1.2em}
@@ -335,7 +335,7 @@
 
 \titleformat{name=\subsubsection,numberless}
     {\fontsize{12pt}{12pt}\bfseries\color{headerscolor}}
-    {\thesubsubsection. #1}
+    {#1}
     {0pt}
     {}
 
