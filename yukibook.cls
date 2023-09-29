@@ -462,10 +462,14 @@
 \DeclareTotalTCBox{\configdir}{ v }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFolderOpen\hspace{0pt}  #1}
 
+\DeclareTotalTCBox{\configlink}{ v }
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faLink\hspace{0pt}  #1}
+
 
 \definecolor{imdb}{HTML}{f5c518}
 \DeclareTotalTCBox{\movie}{ v v}
 {verbatim,colback=white,colframe=imdb,enhanced}{\faFileVideo\hspace{0pt}  \href{#1}{#2}}
+
 
 \newcommand{\itemimage}[6]{
   % #1 item text
