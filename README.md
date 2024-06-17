@@ -1,6 +1,12 @@
 # yukibook.cls
 **yukibook.cls** is a LaTeX class to create textbooks with some custom features. See the file yukibook.pdf to see an example of what you can do with this class.
 
+## DEPRECATED
+
+> [!CAUTION]
+> This class has been deprecated and will not be updated anymore. I have moved all important features from this class into my [Pandoc Template](https://github.com/yuki/pandoc-templates/).
+
+
 ## How to use the class
 You can see the the file **yukibook.tex** to see how to use the class. This is the minimum file:
 
